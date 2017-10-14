@@ -23,3 +23,7 @@ Get some of the classification errors and manually check them, so as to have an 
 | 3             |               |             |        |         |
 | n             |               |             |        |         |
 | %             |      8%       |     40%     |   50%  |         |
+
+## 3.2 Cleaning up incorrectly labeled data
+
+Deep Learning is robust to random data mislabeling, but not systematic mislabeling (e.g. all white dogs annotated as cats)
