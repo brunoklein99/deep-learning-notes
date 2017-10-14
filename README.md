@@ -80,3 +80,7 @@ Transfer Learning makes sense when
 
 * Task A and B have similar input (images, audio...)
 * You have more data for Task A than B (train on A, fine tune on B)
+
+## 3.6 Multi-task Learning
+
+Merge several tasks into one, for instance, in the context of autonomous vehicles, we might have several tasks based on the same data (image). Detect people, cars, signs and traffic lights. We can merge this problem by having our labels be quadruples, one value for each "class".
