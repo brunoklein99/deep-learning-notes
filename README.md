@@ -28,3 +28,4 @@ Get some of the classification errors and manually check them, so as to have an 
 
 * Deep Learning is robust to random data mislabeling, but not systematic mislabeling (e.g. all white dogs annotated as cats)
 * Use manual error analysis with a table as described above where one column is for mislabeled samples.
+* Check % of errors due to mislabeled samples.
