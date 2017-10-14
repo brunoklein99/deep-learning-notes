@@ -32,4 +32,32 @@ Get some of the classification errors and manually check them, so as to have an 
 
 ## 3.3 Training and testing on different distributions
 
-In a case on which you have two distributions, one big and one small, but you actually care about the performance of the small (e.g. it could be the one provided by your users) the best thing to do in build the dev/test set with the small dataset and train with the big one. So you can at least make sure you are not having "biased" performance torwards the big dataset.
+In a case on which you have two distributions, one big and one small, but you actually care about the performance of the small (e.g. it could be the one provided by your users) the best thing to do is build the dev/test set with the small dataset and train with the big one. So you can at least make sure you are not having "biased" performance torwards the big dataset.
+
+You could also add some of the small dataset into the training set. But dev/test sets should still consist of the small set and have a reasonable size.
+
+Let's say you are taking the approach above and get
+
+ * Training set error = 1%
+ * Dev set error = 10%
+  
+This could be because of two reasons:
+
+1. High variance (overfitting)
+2. The data in the dev test is harder, the images, for example may not be as clear as the ones on the training set.
+
+One solution to identify which of these two possible causes are the cause, could be to create a *training-dev* set, which is not used during training, but comes from the same distribution. This can be used for "pre-validation".
+
+Now you could have:
+
+ * Training set error = 1%
+ * Training-dev set error = 9%
+ * Dev set error = 10%
+
+The issue is high variance (overfitting)
+
+ * Training set error = 1%
+ * Training-dev set error = 1%
+ * Dev set error = 10%
+ 
+The dev set is "harder" 
