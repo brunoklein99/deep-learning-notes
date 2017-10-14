@@ -89,6 +89,10 @@ The loss function could be the average of losses for each output.
 
 ![loss](https://i.imgur.com/kRMZ7b5.jpg)
 
+With the loss defined this way, you can also train a model on which for a specific example the quadruple is as such (1,0,?,1)
+
+You just make so the loss takes the non ? average (sum all non ?)
+
 Multi-task learning makes sense when
 
 * The tasks can benefit from same low level features
