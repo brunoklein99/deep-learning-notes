@@ -84,3 +84,7 @@ Transfer Learning makes sense when
 ## 3.6 Multi-task Learning
 
 Merge several tasks into one, for instance, in the context of autonomous vehicles, we might have several tasks based on the same data (image). Detect people, cars, signs and traffic lights. We can merge this problem by having our labels be quadruples, one value for each "class".
+
+The loss function could be the average of losses for each output.
+
+![loss](https://i.imgur.com/kRMZ7b5.jpg)
