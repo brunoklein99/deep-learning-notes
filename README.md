@@ -65,3 +65,8 @@ The dev set is "harder"
 ---
 
 **Human error** <-Avoidable Bias-> **Training set error** <-Variance-> **Training-dev set error** <-Data mismatch-> **Dev error** <-Overfitting to dev set-> **Test error**
+
+## 3.4 Addressing data mismatch
+
+* If have data mismatch, carry out manual error analysis.
+* Make training set more similar to dev/test
