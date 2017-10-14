@@ -88,3 +88,9 @@ Merge several tasks into one, for instance, in the context of autonomous vehicle
 The loss function could be the average of losses for each output.
 
 ![loss](https://i.imgur.com/kRMZ7b5.jpg)
+
+Multi-task learning makes sense when
+
+* The tasks can benefit from same low level features
+* Amout of data for each task is similar
+
