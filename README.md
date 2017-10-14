@@ -71,3 +71,12 @@ The dev set is "harder"
 * If have data mismatch, carry out manual error analysis.
 * Make training set more similar to dev/test
 * Artificial data synthesis (caution to not simulate data for only subset of all possible examples)
+
+## 3.5 Transfer learning
+
+You want to train on Task B, using a pre-trained model trained with Task A
+
+Transfer Learning makes sense when
+
+* Task A and B have similar input (images, audio...)
+* You have more data for Task A than B (train on A, fine tune on B)
