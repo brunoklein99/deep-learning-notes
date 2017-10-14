@@ -14,6 +14,8 @@ Ideas for cat detection:
 * Fix great cats (lions, panthers...) being classified as non cat
 * Improve perfomrnace on blurry images
 
+Get some of the classification errors and manually check them, so as to have an idea on might we do next.
+
 | Images        | Dog           | Great cats  | Blurry | Comments
 | ------------- |:-------------:| :-----------:|:-------:|:--------|
 | 1             |       X       |             |        |Pitbull  |
