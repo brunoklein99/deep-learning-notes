@@ -29,3 +29,7 @@ Get some of the classification errors and manually check them, so as to have an 
 * Deep Learning is robust to random data mislabeling, but not systematic mislabeling (e.g. all white dogs annotated as cats)
 * Use manual error analysis with a table as described above where one column is for mislabeled samples.
 * Check % of errors due to mislabeled samples.
+
+### 3.3 Training and testing on different distributions
+
+In a case on which you have two distributions, one big and one small, but you actually care about the performance of the small (e.g. it could be the one provided by your users) the best thing to do in build the dev/test set with the small dataset and train with the big one. So you can at least make sure you are not having "biased" performance torwards the big dataset.
