@@ -26,4 +26,5 @@ Get some of the classification errors and manually check them, so as to have an 
 
 ## 3.2 Cleaning up incorrectly labeled data
 
-Deep Learning is robust to random data mislabeling, but not systematic mislabeling (e.g. all white dogs annotated as cats)
+* Deep Learning is robust to random data mislabeling, but not systematic mislabeling (e.g. all white dogs annotated as cats)
+* Use manual error analysis with a table as described above where one column is for mislabeled samples.
