@@ -61,3 +61,7 @@ The issue is high variance (overfitting)
  * Dev set error = 10%
  
 The dev set is "harder" 
+
+---
+
+**Human error** <-Avoidable Bias-> **Training set error** <-Variance-> **Training-dev set error** <-Data mismatch-> **Dev error** <-Overfitting to dev set-> **Test error**
