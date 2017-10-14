@@ -14,7 +14,7 @@ Ideas for cat detection:
 * Fix great cats (lions, panthers...) being classified as non cat
 * Improve perfomrnace on blurry images
 
-Get some of the classification errors and manually check them, so as to have an idea on might we do next.
+Get some of the classification errors and manually check them, so as to have an idea on might we do next. Get an insight on why the errors might have happened.
 
 | Images        | Dog           | Great cats  | Blurry | Comments
 | ------------- |:-------------:| :-----------:|:-------:|:--------|
@@ -70,4 +70,4 @@ The dev set is "harder"
 
 * If have data mismatch, carry out manual error analysis.
 * Make training set more similar to dev/test
-* Artificial data synthesis
+* Artificial data synthesis (caution to not simulate data for only subset of all possible examples)
