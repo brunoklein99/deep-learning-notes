@@ -70,3 +70,4 @@ The dev set is "harder"
 
 * If have data mismatch, carry out manual error analysis.
 * Make training set more similar to dev/test
+* Artificial data synthesis
