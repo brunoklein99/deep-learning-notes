@@ -2,3 +2,22 @@
   1.1 Random search hyperparameters over log scale (0.1, 0.01, 0.001)
   
 2. Batch Normalization
+
+# 3 Structuring Machine Learning Problems
+## 3.1 Carrying out error analysis
+
+Evaluate multiple ideas in parallel
+
+Ideas for cat detection:
+
+* Fix picture of dogs being classified as cats
+* Fix great cats (lions, panthers...) being classified as non cat
+* Improve perfomrnace on blurry images
+
+| Images        | Dog           | Great cats  | Blurry | Comments
+| ------------- |:-------------:| :-----------:|:-------:|:--------|
+| 1             |       X       |             |        |Pitbull  |
+| 2             |               |      X      |    X   |         | 
+| 3             |               |             |        |         |
+| n             |               |             |        |         |
+| %             |      8%       |     40%     |   50%  |         |
