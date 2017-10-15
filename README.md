@@ -8,12 +8,12 @@
 
 ## 3.1 Orthogonalization
 
-Orthogonalization or orthogonality is a system design property that assures that modifying an instruction or  a  component  of an algorithm  will not  create or  propagate side  effects  to  other  components  of  the system. It becomeseasier to verify the algorithms independently from one another, it reduces testing and development time. 
+Orthogonalization or orthogonality is a system design property that assures that modifying an instruction or  a  component  of an algorithm  will not  create or  propagate side  effects  to  other  components  of  the system. It becomes easier to verify the algorithms independently from one another, it reduces testing and development time. 
 
-When a supervised learning system is design, these are the 4 assumptions that needs to be true and orthogonal.
+When a supervised learning system is designed, these are the 4 assumptions that needs to be true and orthogonal.
 
 1. Fit training set well in cost function (~ Human level performance)
-* If it doesn’t fit well,the use of a bigger neural network or switching to a better optimization algorithmmight help.
+* If it doesn’t fit well, the use of a bigger neural network or switching to a better optimization algorithm might help.
 
 2. Fit dev set well on cost function
 * If it doesn’t fit well, regularization or using bigger training set might help.
