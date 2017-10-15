@@ -64,7 +64,7 @@ In  this  case,  accuracy  and  running  time  are  the evaluation  matrices.  A
 
 ## 3.4 Training, development and test distributions
 
-Setting up the training, development and test sets have a huge impact on productivity. It is important to choose the development and test sets from the same distribution and it must be taken randomly from all the data.
+Setting up the training, development and test sets have a huge impact on productivity. **It is important to choose the development and test sets from the same distribution** and it must be taken randomly from all the data.
 Choose  a  development  set  and  test  set  to  reflect  data  you  expect  to  get  in  the  future  and  consider important to do well.
 
 ## 3.1 Carrying out error analysis
