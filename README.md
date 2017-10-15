@@ -4,6 +4,46 @@
 2. Batch Normalization
 
 # 3 Structuring Machine Learning Problems
+
+
+## 3.1 Orthogonalization
+
+Orthogonalization or orthogonality is a system design property that assures that modifying an instruction or  a  component  of an algorithm  will not  create or  propagate side  effects  to  other  components  of  the system. It becomeseasier to verify the algorithms independently from one another, it reduces testing and development time. 
+
+When a supervised learning system is design, these are the 4 assumptions that needs to be true and orthogonal.
+
+1. Fit training set well in cost function (~ Human level performance)
+* If it doesn’t fit well,the use of a bigger neural network or switching to a better optimization algorithmmight help.
+
+2. Fit dev set well on cost function
+* If it doesn’t fit well, regularization or using bigger training set might help.
+
+3. Fit test set we'll on cost function
+* If it doesn’t fit well, the use of a bigger development set might help
+
+4. Performs well in real world
+* If it doesn’t perform well, the development test set is not set correctly or the cost function is not evaluating the right thing.
+
+* Early Stopping is not orthogonal, it interferes with all steps above.
+
+## 3.2 Single number evaluation metric
+
+It's a way to quickly select among classifiers.
+
+* Precision - From the ones classified as positive, what % are actually true
+* Recall - % of true classified as such
+* F1 Score
+
+| Algorithm | US | China | India | Other | Average |
+|-----------|:---:|:----:|:-----:|:-----:|:-------:|
+|A|3%|7%|5%|9%|6%|
+|B|5%|6%|5%|10%|6.5%|
+|C|2%|3%|4%|5%|3.5%|
+|D|5%|8%|7%|2%|5.25%|
+|E|4%|5%|2%|4%|3.75%|
+|F|7%|11%|8%|12%|9.5%|
+
+
 ## 3.1 Carrying out error analysis
 
 Evaluate multiple ideas in parallel
