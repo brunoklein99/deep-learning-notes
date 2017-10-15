@@ -50,6 +50,22 @@ Of all the images we predicted y=1, what fraction of it have cats?
 |E|4%|5%|2%|4%|3.75%|
 |F|7%|11%|8%|12%|9.5%|
 
+## 3.3 Satisficing and optimizing metric
+
+There are different metrics to evaluate the performance of a classifier, they are called evaluation matrices. They can be categorized as satisficing and optimizing matrices. It is important to note that the seevaluation matrices must be evaluated on a training set, a development set or on the test set.
+
+| Classifier | Accuracy | Running Time |
+|-----------|:---:|:----:|
+|A|90%|80ms|
+|B|92%|95ms|
+|C|95%|1500ms|
+
+In  this  case,  accuracy  and  running  time  are  the evaluation  matrices.  Accuracy  is  the  optimizing  metric, because you want the classifier to correctly detect a cat image as accuratelyas possible. The running timewhich is set to be under 100 ms in this example, is the satisficing metric which mean that the metrichas to meet expectation set. 
+
+## 3.4 Training, development and test distributions
+
+Setting up the training, development and test sets have a huge impact on productivity. It is important to choose the development and test sets from the same distribution and it must be taken randomly from all the data.
+Choose  a  development  set  and  test  set  to  reflect  data  you  expect  to  get  in  the  future  and  consider important to do well.
 
 ## 3.1 Carrying out error analysis
 
@@ -59,7 +75,7 @@ Ideas for cat detection:
 
 * Fix picture of dogs being classified as cats
 * Fix great cats (lions, panthers...) being classified as non cat
-* Improve perfomrnace on blurry images
+* Improve performance on blurry images
 
 Get some of the classification errors and manually check them, so as to have an idea on might we do next. Get an insight on why the errors might have happened.
 
