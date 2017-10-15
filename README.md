@@ -122,7 +122,7 @@ The function becomes:
 
 * Define correctly an evaluation metric that helps better rank order classifiers
 
-## Human-level performance
+## 3.7 Human-level performance
 
 * Bayes  optimal  error  is  defined  as  the  best  possible  error.  In  other  words, it  means that  any functions mapping from x to y can’t surpass a certain level of accuracy.
 
@@ -133,6 +133,21 @@ These tools are:
 * Get labeled data from humans
 * Gain insight from manual error analysis: Why did the person get this right?
 * Better analysis of bias/variance
+
+## 3.8 Avoidable bias
+
+By knowing what the human-level performance is, it is possible to tell when a training set is performing well or not.
+
+### Example: Cat vs Non-Cat
+
+|| Scenario A | Scenario B |
+|-|:-:|:-:|
+|Humans error| 1 |7.5 |
+|Training error| 8 |8 |
+|Development error| 10 |10 |
+
+* Scenario A - Use bias reduction
+* Scenario B - Use variance reduction
 
 ## 3.1 Carrying out error analysis
 
