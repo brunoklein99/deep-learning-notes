@@ -86,6 +86,54 @@ Now, because a large amount of data is available, we don’t have to compromised
 * Test set helps evaluate the performance of the final classifier which could be less 30% of the whole data set.
 * The development set has to be big enough to evaluate different ideas.
 
+## 3.6 When to change development/test sets and metrics
+
+### Example: Cat vs Non-cat
+
+A cat classifier tries to find a great amount of cat images to show to cat loving users. The evaluation metric
+used is a classification error.
+
+|Algorithm| Classification Error (%) |
+|---------|:------------------------:|
+|A|3%|
+|B|5%|
+
+It seems that Algorithm A is better than Algorithm B since there is only a 3% error, however for some reason,
+Algorithm A is letting through a lot of the pornographic images.
+Algorithm B has 5% error thus it classifies fewer images but it doesn't have pornographic images. From a
+company's point of view, as well as from a user acceptance point of view, Algorithm B is actually a better
+algorithm. The evaluation metric fails to correctly rank order preferences between algorithms. The evaluation
+metric or the development set or test set should be changed.
+
+The misclassification error metric can be written as a function as follow:
+
+![loss](https://i.imgur.com/FmL3ZJ2.jpg)
+
+This function counts up the number of misclassified examples.
+
+The problem with this evaluation metric is that it treats pornographic vs non-pornographic images equally. On
+way to change this evaluation metric is to add the weight term 𝑤(𝑖) .
+
+![weight](https://i.imgur.com/uMBa2Rm.jpg)
+
+The function becomes:
+
+![weight](https://i.imgur.com/8gp4DPE.jpg)
+
+* Define correctly an evaluation metric that helps better rank order classifiers
+
+## Human-level performance
+
+* Bayes  optimal  error  is  defined  as  the  best  possible  error.  In  other  words, it  means that  any functions mapping from x to y can’t surpass a certain level of accuracy.
+
+Also, when  the  performance  of machine  learning  is  worse  than the  performance  of humans,  you  can improveitwith different tools. They are harder to use once its surpasses human-level performance.
+
+These tools are:
+
+* Get labeled data from humans
+* Gain insight from manual error analysis: Why did the person get this right?
+* Better analysis of bias/variance
+
 ## 3.1 Carrying out error analysis
 
 Evaluate multiple ideas in parallel
