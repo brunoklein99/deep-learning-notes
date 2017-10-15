@@ -28,11 +28,18 @@ When a supervised learning system is design, these are the 4 assumptions that ne
 
 ## 3.2 Single number evaluation metric
 
-It's a way to quickly select among classifiers.
+To choose a classifier, a well-defined development set and an evaluation metric speed up the iteration 
+process. 
 
-* Precision - From the ones classified as positive, what % are actually true
-* Recall - % of true classified as such
-* F1 Score
+![table1](https://i.imgur.com/zqhvMBo.jpg)
+
+* Precision
+Of all the images we predicted y=1, what fraction of it have cats?
+
+![precision](https://i.imgur.com/PCWKeXj.jpg)
+![recall](https://i.imgur.com/80tjciy.jpg)
+
+![f1](https://i.imgur.com/nTT2hqd.jpg)
 
 | Algorithm | US | China | India | Other | Average |
 |-----------|:---:|:----:|:-----:|:-----:|:-------:|
