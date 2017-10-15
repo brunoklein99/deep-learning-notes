@@ -67,6 +67,25 @@ In  this  case,  accuracy  and  running  time  are  the evaluation  matrices.  A
 Setting up the training, development and test sets have a huge impact on productivity. **It is important to choose the development and test sets from the same distribution** and it must be taken randomly from all the data.
 Choose  a  development  set  and  test  set  to  reflect  data  you  expect  to  get  in  the  future  and  consider important to do well.
 
+## 3.5 Size of the development and test sets
+
+* Old way of splitting data
+
+We had smaller data set therefore we had to use a greater percentage of data to develop and test ideas and models.
+
+![oldway1](https://i.imgur.com/yXHw20O.jpg)
+![oldway2](https://i.imgur.com/CnhFAwW.jpg)
+
+* Modern era – Big data
+
+Now, because a large amount of data is available, we don’t have to compromised as much and can use a greater portion to train the model.
+
+![newway1](https://i.imgur.com/6OKq3Dl.jpg)
+
+* Set up the size of the test set to give a high confidence in the overall performance of the system.
+* Test set helps evaluate the performance of the final classifier which could be less 30% of the whole data set.
+* The development set has to be big enough to evaluate different ideas.
+
 ## 3.1 Carrying out error analysis
 
 Evaluate multiple ideas in parallel
