@@ -112,7 +112,31 @@ a3 = a3 / keep_prob # scale to expected value
 
 ![](https://i.imgur.com/Y6CYZV9.png)
 
-## 
+### 2.4 Exponentially weighted averages
+
+![](https://i.imgur.com/lCnUomH.gif)
+
+### 2.5 Gradient descent with momentum
+
+![](https://i.imgur.com/JkJnDFW.png)
+
+* Purple = no momentum
+
+* Blue = with momentum
+
+* Red = with momentum with higher beta
+
+Beta is usually 0.9
+
+### 2.6 RMSprop (Root Mean Squared Prop)
+
+![](https://i.imgur.com/gowtXUu.jpg)
+
+### 2.7 Adam (Momentum + RMSProp)
+
+![](https://i.imgur.com/04KifnJ.jpg)
+
+![](https://i.imgur.com/RwknBuO.jpg)
 
 # 3 Structuring Machine Learning Problems
 
@@ -128,7 +152,7 @@ When a supervised learning system is designed, these are the 4 assumptions that 
 2. Fit dev set well on cost function
 * If it doesn’t fit well, regularization or using bigger training set might help.
 
-3. Fit test set we'll on cost function
+3. Fit test set well on cost function
 * If it doesn’t fit well, the use of a bigger development set might help
 
 4. Performs well in real world
