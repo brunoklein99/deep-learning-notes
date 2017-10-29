@@ -33,7 +33,7 @@ Trainining on different distributions: For example, train with images downloaded
 
 ### 2.3 Regularization
 
-#### L2 Regularization
+#### 2.3.1 L2 Regularization
 
 ![](https://i.imgur.com/QB6o1SW.gif)
 
@@ -44,6 +44,18 @@ L2_regularization_cost = lambd * (np.sum(np.square(W1)) + np.sum(np.square(W2)) 
 lambda is chosen based on dev set performance (hyperparameter)
 
 ![](https://i.imgur.com/BGoptdK.jpg)
+
+#### 2.3.2 Dropout
+
+![](https://i.imgur.com/1qzR5lU.jpg)
+
+##### 3.2.2.1 Inverted Dropout
+```
+keep_prob = 0.8
+d3 = np.random.rand(a3.shape[0], a3.shape[1]) < keep_prob
+a3 = a3 * d3
+a3 = a3 / keep_prob # scale to expected value
+```
 
 # 3 Structuring Machine Learning Problems
 
