@@ -31,7 +31,7 @@ Trainining on different distributions: For example, train with images downloaded
   
   * NN architecture
 
-### 2.3 Regularization
+### 2.3 Regularization (Weight Decay)
 
 #### 2.3.1 L2 Regularization
 
@@ -111,6 +111,8 @@ a3 = a3 / keep_prob # scale to expected value
 ---
 
 ![](https://i.imgur.com/Y6CYZV9.png)
+
+## 
 
 # 3 Structuring Machine Learning Problems
 
