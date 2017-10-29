@@ -138,6 +138,30 @@ Beta is usually 0.9
 
 ![](https://i.imgur.com/RwknBuO.jpg)
 
+### 2.8 Learning rate decay
+
+![](https://i.imgur.com/u4YYOuT.png)
+
+* Blue = no decay
+
+* Green = with decay
+
+## 2.9 The problem of local optima (in high dimensional space)
+
+* Old intuition
+
+![](https://i.imgur.com/8vR6lkW.jpg)
+
+* Actual 
+
+![](https://i.imgur.com/hFqLBA9.jpg)
+
+* Unlikely to get stuck in a bad local optima
+
+* Plateaus can make learning slow
+
+![](https://i.imgur.com/3cItCQW.jpg)
+
 # 3 Structuring Machine Learning Problems
 
 ## 3.1 Orthogonalization
