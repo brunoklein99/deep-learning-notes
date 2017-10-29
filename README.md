@@ -31,6 +31,18 @@ Trainining on different distributions: For example, train with images downloaded
   
   * NN architecture
 
+### 2.3 Regularization
+
+#### L2 Regularization
+
+![](https://i.imgur.com/QB6o1SW.gif)
+
+```
+L2_regularization_cost = lambd * (np.sum(np.square(W1)) + np.sum(np.square(W2)) + np.sum(np.square(W3))) / (2 * m)
+```
+
+lambda is chosen based on dev set performance (hyperparameter)
+
 # 3 Structuring Machine Learning Problems
 
 ## 3.1 Orthogonalization
