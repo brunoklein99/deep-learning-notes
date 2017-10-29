@@ -8,6 +8,29 @@ dev and test set just need do be big enough to give a high confidence on model p
 
 Trainining on different distributions: For example, train with images downloaded from web (which may be professionaly taken) vs evaluating on images submitted by users (amateur photographers). In this case, make sure dev and test set are from amateur taken pictures, so at least our metric is trust worthy.
 
+### 2.2 Bias / Variance
+
+![](https://i.imgur.com/wO3LUIL.jpg)
+![](https://i.imgur.com/9fPfQFY.jpg)
+
+### 2.3 Basic Recipe for Machine Learning
+
+1. High bias (training data performance)?
+  
+  * Bigger Network
+  
+  * Train longer
+  
+  * NN architecture
+
+2. High variance (dev set performance)
+
+  * More data
+  
+  * Regularization
+  
+  * NN architecture
+
 # 3 Structuring Machine Learning Problems
 
 ## 3.1 Orthogonalization
