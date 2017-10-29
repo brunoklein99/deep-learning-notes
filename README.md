@@ -1,10 +1,14 @@
-1. Method that receives all hyperparameters by arguments (model, learning rate...)
-  1.1 Random search hyperparameters over log scale (0.1, 0.01, 0.001)
-  
-2. Batch Normalization
+# 2 Improving Deep Neural Networks: Hyperparameter tuning, Regularization and Optimization
+
+### 2.1 Train / Dev / Test sets
+
+Split dataset in 3 parts. Train on train set, choose model based on dev set and final check on train set.
+
+dev and test set just need do be big enough to give a high confidence on model performance
+
+Trainining on different distributions: For example, train with images downloaded from web (which may be professionaly taken) vs evaluating on images submitted by users (amateur photographers). In this case, make sure dev and test set are from amateur taken pictures, so at least our metric is trust worthy.
 
 # 3 Structuring Machine Learning Problems
-
 
 ## 3.1 Orthogonalization
 
