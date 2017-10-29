@@ -43,6 +43,8 @@ L2_regularization_cost = lambd * (np.sum(np.square(W1)) + np.sum(np.square(W2)) 
 
 lambda is chosen based on dev set performance (hyperparameter)
 
+![](https://i.imgur.com/BGoptdK.jpg)
+
 # 3 Structuring Machine Learning Problems
 
 ## 3.1 Orthogonalization
