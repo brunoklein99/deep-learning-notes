@@ -57,6 +57,61 @@ a3 = a3 * d3
 a3 = a3 / keep_prob # scale to expected value
 ```
 
+### 2.3.3 Other regularization methods
+
+#### 2.3.3.1 Data augmenation
+
+* Random flip (horizontal / vertical)
+* Random crop
+* Random zoom
+* Random shift
+* Random distortions
+
+#### 2.3.3.2 Early stopping
+
+![](https://i.imgur.com/nqg4T8N.jpg)
+
+### 2.3.4 Normalizing inputs
+
+1.
+
+<p align="center">
+  <img src="https://i.imgur.com/b2PBf3q.jpg" />
+</p>
+
+
+2. 
+
+<p align="center">
+  <img src="https://i.imgur.com/yeknMRV.gif" />
+</p>
+
+<p align="center">
+  <img src="https://i.imgur.com/jdSVmxB.gif" />
+</p>
+
+<p align="center">
+  <img src="https://i.imgur.com/ZkgIFCT.jpg" />
+</p>
+
+3.
+
+<p align="center">
+  <img src="https://i.imgur.com/WIwunQZ.gif" />
+</p>
+
+<p align="center">
+  <img src="https://i.imgur.com/Ve5RYo2.gif" />
+</p>
+
+<p align="center">
+  <img src="https://i.imgur.com/PQWJXmj.jpg" />
+</p>
+
+---
+
+![](https://i.imgur.com/Y6CYZV9.png)
+
 # 3 Structuring Machine Learning Problems
 
 ## 3.1 Orthogonalization
