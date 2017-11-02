@@ -469,4 +469,4 @@ The above image contains 2 filters, which applied to a single RGB image result i
 
 ## 4.7 Parameter count
 
-![](https://i.imgur.com/Dn776Gj.png)
+![](https://i.imgur.com/00F7rMl.png)
