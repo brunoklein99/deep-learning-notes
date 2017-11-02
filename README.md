@@ -447,3 +447,15 @@ The number of channels/depth of our image and filter volume has to always be the
 ![](https://i.imgur.com/UUGjtZZ.png)
 
 The above image contains 2 filters, which applied to a single RGB image result in a 4x4x2 volume. The subsequent convolutions applied to this output volume should use 2 channel filters.
+
+## 4.5 One Layer of a Convolutional Network
+
+* A bias term is added to each element of the output of each image * filter convolution.
+
+* An activation function is applied to each of these elements.
+
+## 4.6 Pooling Layers
+
+### 4.6.1 Max Pooling
+
+* The intuition behind Max Pooling is that if some feature was detected in some quadrant, that quadrant will have a high value, therefore this information should be persistent in the output volume. 
