@@ -423,10 +423,20 @@ Convolutional output dimension is given by: n - f + 1
     
 * Throw away information from edge, because the edge pixels are used less than the middle ones.
 
-## 4.2.1 Valid Convolution (no padding)
+### 4.2.1 Valid Convolution (no padding)
 
 * n - f + 1
 
-## 4.2.2 Same Convolution (with padding)
+### 4.2.2 Same Convolution (with padding)
 
 * n + 2p - f + 1
+
+## 4.3 Strided Convolutions
+
+* (n + 2p - f) / s + 1
+
+## 4.4 Convolutions Over Volume
+
+![](https://i.imgur.com/at6lSdp.png)
+
+Each of the 27 elements of the 3x3x3 filter are multiplied with their relative element in the current convolutional and summed over, resulting in the final pixel of the resulting 2D image.
