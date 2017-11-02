@@ -451,7 +451,7 @@ The above image contains 2 filters, which applied to a single RGB image result i
 
 ## 4.5 One Layer of a Convolutional Network
 
-* A bias term is added to each element of the output of each image * filter convolution.
+* Each filter W also has a bias term, which is added channel wise to the output of the convolution operation
 
 * An activation function is applied to each of these elements.
 
