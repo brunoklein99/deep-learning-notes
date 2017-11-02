@@ -407,10 +407,26 @@ Multi-task learning makes sense when
 
 # 4 Convolutional Neural Networks
 
-## Convolution Operation
+## 4.1 Convolution Operation
 
 ![](https://i.imgur.com/xngwnzm.jpg)
 
 ![](https://i.imgur.com/6ELl8sC.jpg)
 
 Convolutional output dimension is given by: n - f + 1
+
+## 4.2 Padding
+
+  Solves two issues:
+  
+* Shrinking output
+    
+* Throw away information from edge, because the edge pixels are used less than the middle ones.
+
+## 4.2.1 Valid Convolution (no padding)
+
+* n - f + 1
+
+## 4.2.2 Same Convolution (with padding)
+
+* n + 2p - f + 1
