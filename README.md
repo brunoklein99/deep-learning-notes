@@ -440,3 +440,10 @@ Convolutional output dimension is given by: n - f + 1
 ![](https://i.imgur.com/at6lSdp.png)
 
 Each of the 27 elements of the 3x3x3 filter are multiplied with their relative element in the current convolutional and summed over, resulting in the final pixel of the resulting 2D image.
+The number of channels/depth of our image and filter volume has to always be the same.
+
+### 4.4.1 Multiple filters
+
+![](https://i.imgur.com/UUGjtZZ.png)
+
+The above image contains 2 filters, which applied to a single RGB image result in a 4x4x2 volume. The subsequent convolutions applied to this output volume should use 2 channel filters.
