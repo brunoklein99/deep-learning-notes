@@ -443,9 +443,6 @@ Convolutional output dimension is given by: n - f + 1
 
 * The number of channels/depth of our image and filter volume has to always be the same.
 
-* The values (NN parameters) of filters are the same along the depth axis (e.g. 8 5x5x3 have 208 parameters (25+1*8))
-
-
 ### 4.4.1 Multiple filters
 
 ![](https://i.imgur.com/UUGjtZZ.png)
