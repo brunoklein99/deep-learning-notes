@@ -405,3 +405,10 @@ Multi-task learning makes sense when
 * The tasks can benefit from same low level features
 * Amout of data for each task is similar
 
+# 4 Convolutional Neural Networks
+
+## Convolution Operation
+
+![](https://i.imgur.com/xngwnzm.jpg)
+
+![](https://i.imgur.com/6ELl8sC.jpg)
