@@ -461,3 +461,7 @@ The above image contains 2 filters, which applied to a single RGB image result i
 * The intuition behind Max Pooling is that if some feature was detected in some quadrant, that quadrant will have a high value, therefore this information should be persistent in the output volume. 
 
 * Max Pooling over a volume has an output with same number of channels as input (max pooling is taken channel wise)
+
+### 4.6.2 Average Pooling
+
+* Sometimes is used deep in the net to make a dimensions such as 7x7x1000 to be like 1x1x1000
