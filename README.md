@@ -412,3 +412,5 @@ Multi-task learning makes sense when
 ![](https://i.imgur.com/xngwnzm.jpg)
 
 ![](https://i.imgur.com/6ELl8sC.jpg)
+
+Convolutional output dimension is given by: n - f + 1
