@@ -470,6 +470,6 @@ The above image contains 2 filters, which applied to a single RGB image result i
 
 * Sometimes is used deep in the net to make a dimensions such as 7x7x1000 to be like 1x1x1000
 
-## Parameter count
+## 4.7 Parameter count
 
 ![](https://i.imgur.com/Dn776Gj.png)
