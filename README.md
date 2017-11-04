@@ -188,6 +188,29 @@ r  = -4 * np.random.rand() # r is [-4, 0]
 lr = 10 ^ r
 ```
 
+## 2.12 Batch Normalization
+
+* Speeds up learning
+* Like feature mean and std normalization, but for intermediate linearities or non linearities
+
+<p align="center">
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{120}&space;\large&space;\mu&space;=&space;\frac{1}{m}&space;\sum_{i&space;=&space;0}^{m}&space;z^{(i)}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;\mu&space;=&space;\frac{1}{m}&space;\sum_{i&space;=&space;0}^{m}&space;z^{(i)}" title="\large \mu = \frac{1}{m} \sum_{i = 0}^{m} z^{(i)}" /></a>
+</p>
+
+<p align="center">
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{120}&space;\large&space;\sigma^2&space;=&space;\frac{1}{m}&space;\sum_{i&space;=&space;0}^{m}&space;(z^{(i)}&space;-&space;\mu)^2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;\sigma^2&space;=&space;\frac{1}{m}&space;\sum_{i&space;=&space;0}^{m}&space;(z^{(i)}&space;-&space;\mu)^2" title="\large \sigma^2 = \frac{1}{m} \sum_{i = 0}^{m} (z^{(i)} - \mu)^2" /></a></p>
+
+<p align="center">
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{120}&space;\large&space;z^{(i)}_{norm}&space;=&space;\frac{z^{(i)}&space;-&space;\mu}{\sqrt(\sigma^2&space;&plus;&space;\epsilon)}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;z^{(i)}_{norm}&space;=&space;\frac{z^{(i)}&space;-&space;\mu}{\sqrt(\sigma^2&space;&plus;&space;\epsilon)}" title="\large z^{(i)}_{norm} = \frac{z^{(i)} - \mu}{\sqrt(\sigma^2 + \epsilon)}" /></a>
+</p>
+
+
+<p align="center">
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{120}&space;\large&space;\tilde{z}^{(i)}&space;=&space;\gamma&space;z^{(i)}_{norm}&space;&plus;&space;\beta" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;\tilde{z}^{(i)}&space;=&space;\gamma&space;z^{(i)}_{norm}&space;&plus;&space;\beta" title="\large \tilde{z}^{(i)} = \gamma z^{(i)}_{norm} + \beta" /></a>
+</p>
+
+* Gamma and Beta are learnable parameters. They allow the mean to be non zero. They allow Z tilde to be the indentity function if need be.
+
 # 3 Structuring Machine Learning Problems
 
 ## 3.1 Orthogonalization
