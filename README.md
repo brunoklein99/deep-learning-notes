@@ -558,7 +558,7 @@ When these two tensors shape are different:
   <img src="https://i.imgur.com/vYcQbS9.png" />
 </p>
 
-## 4.10.1 Inception Module
+### 4.10.1 Inception Module
 
 <p align="center">
   <img src="https://i.imgur.com/YGt826U.png" />
