@@ -175,6 +175,18 @@ For instance:
 
 Suppose hyperparameter 2 is not as relevant as hyperparameter 1. In the case of grid search, we are only trying 5 values of hyperparameter 1, whereas with random search we are trying several more.
 
+## 2.11 Hyperparameter value scale
+
+* Not all hyperparameters should be sampled on uniform distribution
+
+For instance:
+
+In the case of learning rate, where a reasonable value could be in the range of [0.001, 1). If we were to sample uniformly, 90% of our values would be in the range [0.1, 1). Intead, we sample in log scale.
+
+```
+r  = -4 * np.random.rand() # r is [-4, 0]
+lr = 10 ^ r
+```
 
 # 3 Structuring Machine Learning Problems
 
