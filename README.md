@@ -162,6 +162,20 @@ Beta is usually 0.9
 
 ![](https://i.imgur.com/3cItCQW.jpg)
 
+## 2.10 Hyperparameter value search
+
+* Use random search
+* Do not use grid search
+
+For instance:
+
+<p align="center">
+  <img src="https://i.imgur.com/S0OPSYM.png" />
+</p>
+
+Suppose hyperparameter 2 is not as relevant as hyperparameter 1. In the case of grid search, we are only trying 5 values of hyperparameter 1, whereas with random search we are trying several more.
+
+
 # 3 Structuring Machine Learning Problems
 
 ## 3.1 Orthogonalization
