@@ -551,3 +551,9 @@ When these two tensors shape are different:
 
 * Ws could be a matrix that ends up creating padding
 * Ws could be some learned parameters
+
+## 4.10 Inception
+
+<p align="center">
+  <img src="https://i.imgur.com/vYcQbS9.png" />
+</p>
