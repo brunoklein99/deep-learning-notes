@@ -451,7 +451,7 @@ The above image contains 2 filters, which applied to a single RGB image result i
 
 ## 4.5 One Layer of a Convolutional Network
 
-* A bias term is added to each element of the output of each image * filter convolution.
+* Each filter W also has a bias term, which is added channel wise to the output of the convolution operation
 
 * An activation function is applied to each of these elements.
 
@@ -470,3 +470,100 @@ The above image contains 2 filters, which applied to a single RGB image result i
 ## 4.7 Parameter count
 
 ![](https://i.imgur.com/00F7rMl.png)
+
+## 4.8 Classic Networks
+
+### 4.8.1 LeNet-5
+
+![](https://i.imgur.com/JsOcVeA.png)
+
+* Dimension goes down
+* Filters go up
+* Conv -> Pool -> Conv -> Pool
+
+### 4.8.2 AlexNet
+
+![](https://i.imgur.com/VOcIzqL.png)
+
+* Bigger
+* ReLU
+
+### 4.8.3 VGG-16
+
+![](https://i.imgur.com/jMRmLSS.png)
+
+* Uniform
+* Dimension goes down
+* Filters go up
+
+## 4.9 ResNets
+
+### 4.9.1 Residual Block
+
+#### 4.9.1.1 Normal block
+
+<p align="center">
+  <img src="https://i.imgur.com/DGcP3MY.gif" />
+</p>
+
+<p align="center">
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{120}&space;\large&space;z^{[l&plus;1]}&space;=&space;W^{[l&plus;1]}&space;a^{[l]}&space;&plus;&space;b^{[l&plus;1]}&space;\hspace{15pt}&space;a^{[l&plus;1]}=g(z^{[l&plus;1]})&space;\hspace{15pt}&space;z^{[l&plus;2]}&space;=&space;W^{[l&plus;2]}&space;a^{[l&plus;1]}&space;&plus;&space;b^{[l&plus;2]}&space;\hspace{15pt}&space;a^{[l&plus;2]}=&space;g(z^{[l&plus;2]})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;z^{[l&plus;1]}&space;=&space;W^{[l&plus;1]}&space;a^{[l]}&space;&plus;&space;b^{[l&plus;1]}&space;\hspace{15pt}&space;a^{[l&plus;1]}=g(z^{[l&plus;1]})&space;\hspace{15pt}&space;z^{[l&plus;2]}&space;=&space;W^{[l&plus;2]}&space;a^{[l&plus;1]}&space;&plus;&space;b^{[l&plus;2]}&space;\hspace{15pt}&space;a^{[l&plus;2]}=&space;g(z^{[l&plus;2]})" title="\large z^{[l+1]} = W^{[l+1]} a^{[l]} + b^{[l+1]} \hspace{15pt} a^{[l+1]}=g(z^{[l+1]}) \hspace{15pt} z^{[l+2]} = W^{[l+2]} a^{[l+1]} + b^{[l+2]} \hspace{15pt} a^{[l+2]}= g(z^{[l+2]})" /></a>
+</p>
+
+#### 4.9.1.2 Residual block
+
+<p align="center">
+  <img src="https://i.imgur.com/RDiVHtz.png" />
+</p>
+
+<p align="center">
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{120}&space;\large&space;a^{[l&plus;2]}&space;=&space;g(z^{[l&plus;2]}&space;&plus;&space;a^{[l]})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;a^{[l&plus;2]}&space;=&space;g(z^{[l&plus;2]}&space;&plus;&space;a^{[l]})" title="\large a^{[l+2]} = g(z^{[l+2]} + a^{[l]})" /></a></p>
+
+"Plain Network":
+
+<p align="center">
+  <img src="https://i.imgur.com/EeJy7sk.png" />
+</p>
+
+<p align="center">
+  <img src="https://i.imgur.com/ASfAS9G.png" />
+</p>
+
+* ResNets are robust against Vanishing/Exploding Gradients, allowing us to create deeper networks.
+
+### 4.9.2 Why ResNets Work
+
+![](https://i.imgur.com/6DmxsTY.png)
+
+If the paremeters of layer l + 2 are small (e.g. because of regularization), becase of the skip connection of the residual block, it's easy for block's "function" to be an identity function, meaning a[l+2] == a[l]. Therefore, the additional residual block doesn't hurt performance in a worst case scenario.
+
+
+### 4.9.3 A note on tensors shape for residual addition
+
+* To make so that z[l+2] and a[l] can be added, "same" convolutional is used throughout.
+
+When these two tensors shape are different:
+
+
+<p align="center">
+  <img src="https://i.imgur.com/gXIrFLt.png" />
+</p>
+
+* Ws could be a matrix that ends up creating padding
+* Ws could be some learned parameters
+* An alternative approach is discussed in 2.2 of the assignment for the 2nd week
+
+## 4.10 Inception
+
+<p align="center">
+  <img src="https://i.imgur.com/vYcQbS9.png" />
+</p>
+
+### 4.10.1 Inception Module
+
+<p align="center">
+  <img src="https://i.imgur.com/YGt826U.png" />
+</p>
+
+* The extra 1x1 conv are used to reduce the volume depth do reduce computation cost.
+
