@@ -530,3 +530,9 @@ The above image contains 2 filters, which applied to a single RGB image result i
 </p>
 
 * ResNets are robust against Vanishing/Exploding Gradients, allowing us to create deeper networks.
+
+### 4.9.2 Why ResNets Work
+
+![](https://i.imgur.com/6DmxsTY.png)
+
+If the paremeters of layer l + 2 are small (e.g. because of regularization), becase of the skip connection of the residual block, it's easy for block's "function" to be an identity function, meaning a[l+2] == a[l]. Therefore, the additional residual block doesn't hurt performance in a worst case scenario.
