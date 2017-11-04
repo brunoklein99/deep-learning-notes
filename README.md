@@ -510,7 +510,7 @@ The above image contains 2 filters, which applied to a single RGB image result i
 <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{120}&space;\large&space;z^{[l&plus;1]}&space;=&space;W^{[l&plus;1]}&space;a^{[l]}&space;&plus;&space;b^{[l&plus;1]}&space;\hspace{15pt}&space;a^{[l&plus;1]}=g(z^{[l&plus;1]})&space;\hspace{15pt}&space;z^{[l&plus;2]}&space;=&space;W^{[l&plus;2]}&space;a^{[l&plus;1]}&space;&plus;&space;b^{[l&plus;2]}&space;\hspace{15pt}&space;a^{[l&plus;2]}=&space;g(z^{[l&plus;2]})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;z^{[l&plus;1]}&space;=&space;W^{[l&plus;1]}&space;a^{[l]}&space;&plus;&space;b^{[l&plus;1]}&space;\hspace{15pt}&space;a^{[l&plus;1]}=g(z^{[l&plus;1]})&space;\hspace{15pt}&space;z^{[l&plus;2]}&space;=&space;W^{[l&plus;2]}&space;a^{[l&plus;1]}&space;&plus;&space;b^{[l&plus;2]}&space;\hspace{15pt}&space;a^{[l&plus;2]}=&space;g(z^{[l&plus;2]})" title="\large z^{[l+1]} = W^{[l+1]} a^{[l]} + b^{[l+1]} \hspace{15pt} a^{[l+1]}=g(z^{[l+1]}) \hspace{15pt} z^{[l+2]} = W^{[l+2]} a^{[l+1]} + b^{[l+2]} \hspace{15pt} a^{[l+2]}= g(z^{[l+2]})" /></a>
 </p>
 
-#### 4.9.1.1 Residual block
+#### 4.9.1.2 Residual block
 
 <p align="center">
   <img src="https://i.imgur.com/RDiVHtz.png" />
@@ -519,3 +519,14 @@ The above image contains 2 filters, which applied to a single RGB image result i
 <p align="center">
 <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{120}&space;\large&space;a^{[l&plus;2]}&space;=&space;g(z^{[l&plus;2]}&space;&plus;&space;a^{[l]})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;a^{[l&plus;2]}&space;=&space;g(z^{[l&plus;2]}&space;&plus;&space;a^{[l]})" title="\large a^{[l+2]} = g(z^{[l+2]} + a^{[l]})" /></a></p>
 
+"Plain Network":
+
+<p align="center">
+  <img src="https://i.imgur.com/EeJy7sk.png" />
+</p>
+
+<p align="center">
+  <img src="https://i.imgur.com/ASfAS9G.png" />
+</p>
+
+* ResNets are robust against Vanishing/Exploding Gradients, allowing us to create deeper networks.
