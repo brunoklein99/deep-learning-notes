@@ -470,3 +470,13 @@ The above image contains 2 filters, which applied to a single RGB image result i
 ## 4.7 Parameter count
 
 ![](https://i.imgur.com/00F7rMl.png)
+
+## 4.8 Classic Networks
+
+### 4.8.1 LeNet-5
+
+![](https://i.imgur.com/JsOcVeA.png)
+
+* Dimension goes down
+* Filters go up
+* Conv -> Pool -> Conv -> Pool
