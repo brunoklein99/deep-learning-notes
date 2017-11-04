@@ -536,3 +536,18 @@ The above image contains 2 filters, which applied to a single RGB image result i
 ![](https://i.imgur.com/6DmxsTY.png)
 
 If the paremeters of layer l + 2 are small (e.g. because of regularization), becase of the skip connection of the residual block, it's easy for block's "function" to be an identity function, meaning a[l+2] == a[l]. Therefore, the additional residual block doesn't hurt performance in a worst case scenario.
+
+
+### 4.9.3 A note on tensors shape for residual addition
+
+* To make so that z[l+2] and a[l] can be added, "same" convolutional is used throughout.
+
+When these two tensors shape are different:
+
+
+<p align="center">
+  <img src="https://i.imgur.com/gXIrFLt.png" />
+</p>
+
+* Ws could be a matrix that ends up creating padding
+* Ws could be some learned parameters
