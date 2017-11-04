@@ -557,3 +557,12 @@ When these two tensors shape are different:
 <p align="center">
   <img src="https://i.imgur.com/vYcQbS9.png" />
 </p>
+
+## 4.10.1 Inception Module
+
+<p align="center">
+  <img src="https://i.imgur.com/YGt826U.png" />
+</p>
+
+* The extra 1x1 conv are used to reduce the volume depth do reduce computation cost.
+
