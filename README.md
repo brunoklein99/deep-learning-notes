@@ -660,3 +660,25 @@ You can use different loss functions for each output value, maybe log likelyhood
 5. Hopefully these windows would have detected the objects if any
 
 Sliding windows has high compute cost
+
+### 4.11.3 Convolutional Implementation of Sliding Windows (Parallelization)
+
+1. Sliding windows normal convnet topology
+
+<p align="center">
+  <img src="https://i.imgur.com/kkwPWse.jpg" />
+</p>
+
+2. Sliding windows fully convolutional topology (mathematically same as above)
+
+<p align="center">
+  <img src="https://i.imgur.com/Qz5NHQi.png" />
+</p>
+
+3.
+
+<p align="center">
+  <img src="https://i.imgur.com/aTjvgwm.png" />
+</p>
+
+Each one of the 4 output rows corresponds to the respective input corner crop as illustrated.
