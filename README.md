@@ -642,5 +642,5 @@ Pc indicates if there is a class present.
 
 If there isn't a class in the evaluation we "don't care" about the rest of the output values, meaning their loss is not computed.
 
-You can use different loss functions for each output value, maybe logistic for class and booleans and MSE for bounding box
+You can use different loss functions for each output value, maybe log likelyhood for class and booleans and MSE for bounding box
 
