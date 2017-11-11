@@ -616,3 +616,31 @@ When these two tensors shape are different:
 
 * The extra 1x1 conv are used to reduce the volume depth do reduce computation cost.
 
+## 4.11 Detection Algorithms
+
+* Object "Localization" - at most, a single object
+* Object "Detection" - multiple objects
+
+### 4.11.1 Object Localization
+
+* Target label sample:
+
+Pc indicates if there is a class present.
+
+<p align="center">
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{120}&space;\large&space;[P_c,&space;b_x,&space;b_y,&space;b_h,&space;b_w,&space;c_1,&space;c_2,&space;c_3]" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;[P_c,&space;b_x,&space;b_y,&space;b_h,&space;b_w,&space;c_1,&space;c_2,&space;c_3]" title="\large [P_c, b_x, b_y, b_h, b_w, c_1, c_2, c_3]" /></a></p>
+
+<p align="center">
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{120}&space;\large&space;[1,&space;b_x,&space;b_y,&space;b_h,&space;b_w,&space;0,&space;1,&space;0]" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;[1,&space;b_x,&space;b_y,&space;b_h,&space;b_w,&space;0,&space;1,&space;0]" title="\large [1, b_x, b_y, b_h, b_w, 0, 1, 0]" />
+</a>
+</p>
+
+<p align="center">
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{120}&space;\large&space;[0,&space;?,&space;?,&space;?,&space;?,&space;?,&space;?,&space;?]" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;[0,&space;?,&space;?,&space;?,&space;?,&space;?,&space;?,&space;?]" title="\large [0, ?, ?, ?, ?, ?, ?, ?]" />
+</a>
+</p>
+
+If there isn't a class in the evaluation we "don't care" about the rest of the output values, meaning their loss is not computed.
+
+You can use different loss functions for each output value, maybe logistic for class and booleans and MSE for bounding box
+
