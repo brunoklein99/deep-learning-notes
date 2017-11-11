@@ -644,3 +644,19 @@ If there isn't a class in the evaluation we "don't care" about the rest of the o
 
 You can use different loss functions for each output value, maybe log likelyhood for class and booleans and MSE for bounding box
 
+### 4.11.2 Object Detection
+
+* Sliding Windows
+
+1. Train a convet to be able to find the object
+
+<p align="center">
+  <img src="https://i.imgur.com/HaTCkmV.png" />
+</p>
+
+2. Use the convnet in sliding windows over the image with reasonable stride
+3. Do it again, only now with a bigger window
+4. Same as above with even bigger window
+5. Hopefully these windows would have detected the objects if any
+
+Sliding windows has high compute cost
