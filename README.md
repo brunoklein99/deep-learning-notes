@@ -682,3 +682,9 @@ Sliding windows has high compute cost
 </p>
 
 Each one of the 4 output rows corresponds to the respective input corner crop as illustrated.
+
+<p align="center">
+  <img src="https://i.imgur.com/Ho1f3nS.png" />
+</p>
+
+Max Pool stride is same as sliding window stride.
