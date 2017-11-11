@@ -706,4 +706,8 @@ Combines the idea of 4.11.3 with the target labels encoding of 4.11.2 to output 
 
 Yolo paper: https://arxiv.org/pdf/1506.02640v5.pdf
 
+### 4.11.5 Intersection Over Union
 
+<p align="center">
+  <img src="https://i.imgur.com/JNjdgBz.png" />
+</p>
