@@ -711,3 +711,13 @@ Yolo paper: https://arxiv.org/pdf/1506.02640v5.pdf
 <p align="center">
   <img src="https://i.imgur.com/JNjdgBz.png" />
 </p>
+
+### 4.11.6 Non-max Suppression
+
+* Sometimes the same object may be detected multiple times
+
+<p align="center">
+  <img src="https://i.imgur.com/i9nts6i.jpg" />
+</p>
+
+* We can erase the closing bouding boxes with least IoU
