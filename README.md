@@ -721,3 +721,32 @@ Yolo paper: https://arxiv.org/pdf/1506.02640v5.pdf
 </p>
 
 * We can erase the closing bouding boxes with least IoU
+
+### 4.11.6 Anchor Boxes
+
+* How to make a grid cell detect multiple objects
+
+<p align="center">
+  <img src="https://i.imgur.com/RUkORQ3.jpg" />
+</p>
+
+* You pre-define 2 different shapes (or more)
+  1. Anchor box 1
+  2. Anchor box 2
+  
+<p align="center">
+  <img src="https://i.imgur.com/lEzDPka.png" />
+</p>
+
+* Your target y now turns out to be
+
+
+<p align="center">
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{120}&space;\large&space;y&space;=&space;[P_c,&space;b_x,&space;b_y,&space;b_h,&space;b_w,&space;c_1,&space;c_2,&space;c_3,&space;P_c,&space;b_x,&space;b_y,&space;b_h,&space;b_w,&space;c_1,&space;c_2,&space;c_3]" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;y&space;=&space;[P_c,&space;b_x,&space;b_y,&space;b_h,&space;b_w,&space;c_1,&space;c_2,&space;c_3,&space;P_c,&space;b_x,&space;b_y,&space;b_h,&space;b_w,&space;c_1,&space;c_2,&space;c_3]" title="\large y = [P_c, b_x, b_y, b_h, b_w, c_1, c_2, c_3, P_c, b_x, b_y, b_h, b_w, c_1, c_2, c_3]" />
+</a>
+</p>
+
+The first 8 are associated with the Anchor box 1 and the later 8 with Anchor box 2.
+
+* Each object in training image is assigned to grid cell that contains that object's point
+
