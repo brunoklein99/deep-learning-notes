@@ -688,3 +688,22 @@ Each one of the 4 output rows corresponds to the respective input corner crop as
 </p>
 
 Max Pool stride is same as sliding window stride.
+
+### 4.11.4 YOLO
+
+Combines the idea of 4.11.3 with the target labels encoding of 4.11.2 to output a single volume where each row outputs the result for each image's region.
+
+* bx, by, bh, bw encoding
+  * bx - [0, 1] relative to the size of the subimage (horizontal center)
+  * by - [0, 1] relative to the size of the subimage (verical center)
+  * bh - [0, >1] relative to the size of the subimage
+  * bw - [0, >1] relative to the size of the subimage
+  
+
+<p align="center">
+  <img src="https://i.imgur.com/oUzvBfw.jpg" />
+</p>
+
+Yolo paper: https://arxiv.org/pdf/1506.02640v5.pdf
+
+
