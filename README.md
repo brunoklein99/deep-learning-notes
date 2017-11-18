@@ -750,3 +750,22 @@ The first 8 are associated with the Anchor box 1 and the later 8 with Anchor box
 
 * Each object in training image is assigned to grid cell that contains that object's point
 
+## 4.12 One Shot Learning
+
+* Learn from one image or a small number.
+
+## 4.13 Siamese Network
+
+* Run the same DNN on different inputs and comparing the result.
+* The output is a n-dim vector which is an embedding of the input images
+
+## 4.13 Triplet Loss
+
+* 3 images (anchor, positive, negative)
+
+
+<p align="center">
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{120}&space;\large&space;||f(A)&space;-&space;f(P))||^2&space;-&space;||f(A)&space;-&space;f(N))||^2&space;&plus;&space;\alpha&space;\leq&space;0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;||f(A)&space;-&space;f(P))||^2&space;-&space;||f(A)&space;-&space;f(N))||^2&space;&plus;&space;\alpha&space;\leq&space;0" title="\large ||f(A) - f(P))||^2 - ||f(A) - f(N))||^2 + \alpha \leq 0" /></a>
+</p>
+
+* Alpha is used to make sure negative images have a "different score" by at least some margin. Otherwise the DNN could have f(img) = 0 vector and the condition would be satistied.
