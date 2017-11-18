@@ -777,3 +777,19 @@ The first 8 are associated with the Anchor box 1 and the later 8 with Anchor box
 
 * Use Logistic Regression to output if the images are the same. The input features would be the absolute difference between each element of the network embedding.
 
+## 4.14 Neural Style Transfer
+
+* G - Generated
+* S - Style
+* C - Content
+
+## 4.14.1 Cost function
+
+
+<p align="center">
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{120}&space;\large&space;J(G)&space;=&space;\alpha&space;J_{content}(C,G)&space;&plus;&space;\beta&space;J_{style}(S,G)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;J(G)&space;=&space;\alpha&space;J_{content}(C,G)&space;&plus;&space;\beta&space;J_{style}(S,G)" title="\large J(G) = \alpha J_{content}(C,G) + \beta J_{style}(S,G)" /></a>
+
+</p>
+
+
