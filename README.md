@@ -763,7 +763,6 @@ The first 8 are associated with the Anchor box 1 and the later 8 with Anchor box
 
 * 3 images (anchor, positive, negative)
 
-
 <p align="center">
 <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{120}&space;\large&space;L(A,&space;P,&space;N)&space;=&space;max(||f(A)&space;-&space;f(P))||^2&space;-&space;||f(A)&space;-&space;f(N))||^2&space;&plus;&space;\alpha,&space;0)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;L(A,&space;P,&space;N)&space;=&space;max(||f(A)&space;-&space;f(P))||^2&space;-&space;||f(A)&space;-&space;f(N))||^2&space;&plus;&space;\alpha,&space;0)" title="\large L(A, P, N) = max(||f(A) - f(P))||^2 - ||f(A) - f(N))||^2 + \alpha, 0)" /></a>
 </p>
@@ -773,3 +772,8 @@ The first 8 are associated with the Anchor box 1 and the later 8 with Anchor box
 * Relevant paper: https://arxiv.org/abs/1503.03832
 
 * Choose triplets that are "hard" (not random), otherwise gradient descent won't do anything, because the DNN will be getting everything right, it would be trivial to satisfy the condition <= 0.
+
+## 4.13 Face Verification and Binary Classification
+
+* Use Logistic Regression to output if the images are the same. The input features would be the absolute difference between each element of the network embedding.
+
