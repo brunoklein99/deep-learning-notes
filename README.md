@@ -765,7 +765,7 @@ The first 8 are associated with the Anchor box 1 and the later 8 with Anchor box
 
 
 <p align="center">
-<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{120}&space;\large&space;||f(A)&space;-&space;f(P))||^2&space;-&space;||f(A)&space;-&space;f(N))||^2&space;&plus;&space;\alpha&space;\leq&space;0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;||f(A)&space;-&space;f(P))||^2&space;-&space;||f(A)&space;-&space;f(N))||^2&space;&plus;&space;\alpha&space;\leq&space;0" title="\large ||f(A) - f(P))||^2 - ||f(A) - f(N))||^2 + \alpha \leq 0" /></a>
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{120}&space;\large&space;L(A,&space;P,&space;N)&space;=&space;max(||f(A)&space;-&space;f(P))||^2&space;-&space;||f(A)&space;-&space;f(N))||^2&space;&plus;&space;\alpha,&space;0)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;L(A,&space;P,&space;N)&space;=&space;max(||f(A)&space;-&space;f(P))||^2&space;-&space;||f(A)&space;-&space;f(N))||^2&space;&plus;&space;\alpha,&space;0)" title="\large L(A, P, N) = max(||f(A) - f(P))||^2 - ||f(A) - f(N))||^2 + \alpha, 0)" /></a>
 </p>
 
 * Alpha is used to make sure negative images have a "different score" by at least some margin. Otherwise the DNN could have f(img) = 0 vector and the condition would be satistied.
