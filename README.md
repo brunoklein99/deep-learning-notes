@@ -769,3 +769,5 @@ The first 8 are associated with the Anchor box 1 and the later 8 with Anchor box
 </p>
 
 * Alpha is used to make sure negative images have a "different score" by at least some margin. Otherwise the DNN could have f(img) = 0 vector and the condition would be satistied.
+
+https://arxiv.org/abs/1503.03832
