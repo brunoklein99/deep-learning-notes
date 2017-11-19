@@ -750,3 +750,70 @@ The first 8 are associated with the Anchor box 1 and the later 8 with Anchor box
 
 * Each object in training image is assigned to grid cell that contains that object's point
 
+## 4.12 One Shot Learning
+
+* Learn from one image or a small number.
+
+## 4.13 Siamese Network
+
+* Run the same DNN on different inputs and comparing the result.
+* The output is a n-dim vector which is an embedding of the input images
+
+## 4.13 Triplet Loss
+
+* 3 images (anchor, positive, negative)
+
+<p align="center">
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{120}&space;\large&space;L(A,&space;P,&space;N)&space;=&space;max(||f(A)&space;-&space;f(P))||^2&space;-&space;||f(A)&space;-&space;f(N))||^2&space;&plus;&space;\alpha,&space;0)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;L(A,&space;P,&space;N)&space;=&space;max(||f(A)&space;-&space;f(P))||^2&space;-&space;||f(A)&space;-&space;f(N))||^2&space;&plus;&space;\alpha,&space;0)" title="\large L(A, P, N) = max(||f(A) - f(P))||^2 - ||f(A) - f(N))||^2 + \alpha, 0)" /></a>
+</p>
+
+* Alpha is used to make sure negative images have a "different score" by at least some margin. Otherwise the DNN could have f(img) = 0 vector and the condition would be satistied.
+
+* Relevant paper: https://arxiv.org/abs/1503.03832
+
+* Choose triplets that are "hard" (not random), otherwise gradient descent won't do anything, because the DNN will be getting everything right, it would be trivial to satisfy the condition <= 0.
+
+## 4.13 Face Verification and Binary Classification
+
+* Use Logistic Regression to output if the images are the same. The input features would be the absolute difference between each element of the network embedding.
+
+## 4.14 Neural Style Transfer
+
+* G - Generated
+* S - Style
+* C - Content
+
+### 4.14.1 Cost function
+
+
+<p align="center">
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{120}&space;\large&space;J(G)&space;=&space;\alpha&space;J_{content}(C,G)&space;&plus;&space;\beta&space;J_{style}(S,G)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;J(G)&space;=&space;\alpha&space;J_{content}(C,G)&space;&plus;&space;\beta&space;J_{style}(S,G)" title="\large J(G) = \alpha J_{content}(C,G) + \beta J_{style}(S,G)" /></a>
+
+#### Content cost function
+
+* Is based on a hidden layer L
+* Use pre-trained ConvNet
+* Let a[l][C] and a[l][G] be the activation of layer l on the images
+* If a[l][C] and a[l][G] are similar, both images have similar content
+
+
+<p align="center">
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{120}&space;\large&space;J_{content}(C,&space;G)&space;=&space;||a^{[l](C)]}&space;-&space;a^{[l](G)]}||^2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;J_{content}(C,&space;G)&space;=&space;||a^{[l](C)]}&space;-&space;a^{[l](G)]}||^2" title="\large J_{content}(C, G) = ||a^{[l](C)]} - a^{[l](G)]}||^2" /></a>
+</p>
+
+#### Style Cost Function
+
+* Is based on a hidden layer L
+* Measures how correlated are the filters of a given layer for two different images.
+
+
+<p align="center">
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{120}&space;\large&space;J_{stlye}^{(l)}(S,&space;G)&space;=&space;||G^{[l](S)}-G^{[l](G)}||^2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;J_{stlye}^{(l)}(S,&space;G)&space;=&space;||G^{[l](S)}-G^{[l](G)}||^2" title="\large J_{stlye}^{(l)}(S, G) = ||G^{[l](S)}-G^{[l](G)}||^2" /></a>
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{120}&space;\large&space;G^{[l](S)}_{kk'}=\sum_{i=1}^{n_h^{[l]}}\sum_{j=1}^{n_w^{[l]}}&space;a^{[l](S)}_{ijk}a^{[l](S)}_{ijk'}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;G^{[l](S)}_{kk'}=\sum_{i=1}^{n_h^{[l]}}\sum_{j=1}^{n_w^{[l]}}&space;a^{[l](S)}_{ijk}a^{[l](S)}_{ijk'}" title="\large G^{[l](S)}_{kk'}=\sum_{i=1}^{n_h^{[l]}}\sum_{j=1}^{n_w^{[l]}} a^{[l](S)}_{ijk}a^{[l](S)}_{ijk'}" /></a>
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{120}&space;\large&space;G^{[l](G)}_{kk'}=\sum_{i=1}^{n_h^{[l]}}\sum_{j=1}^{n_w^{[l]}}&space;a^{[l](G)}_{ijk}a^{[l](G)}_{ijk'}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;G^{[l](G)}_{kk'}=\sum_{i=1}^{n_h^{[l]}}\sum_{j=1}^{n_w^{[l]}}&space;a^{[l](G)}_{ijk}a^{[l](G)}_{ijk'}" title="\large G^{[l](G)}_{kk'}=\sum_{i=1}^{n_h^{[l]}}\sum_{j=1}^{n_w^{[l]}} a^{[l](G)}_{ijk}a^{[l](G)}_{ijk'}" /></a>
+
+</p>
