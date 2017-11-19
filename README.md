@@ -783,13 +783,37 @@ The first 8 are associated with the Anchor box 1 and the later 8 with Anchor box
 * S - Style
 * C - Content
 
-## 4.14.1 Cost function
+### 4.14.1 Cost function
 
 
 <p align="center">
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{120}&space;\large&space;J(G)&space;=&space;\alpha&space;J_{content}(C,G)&space;&plus;&space;\beta&space;J_{style}(S,G)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;J(G)&space;=&space;\alpha&space;J_{content}(C,G)&space;&plus;&space;\beta&space;J_{style}(S,G)" title="\large J(G) = \alpha J_{content}(C,G) + \beta J_{style}(S,G)" /></a>
 
+#### Content cost function
+
+* Is based on a hidden layer L
+* Use pre-trained ConvNet
+* Let a[l][C] and a[l][G] be the activation of layer l on the images
+* If a[l][C] and a[l][G] are similar, both images have similar content
+
+
+<p align="center">
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{120}&space;\large&space;J_{content}(C,&space;G)&space;=&space;||a^{[l](C)]}&space;-&space;a^{[l](G)]}||^2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;J_{content}(C,&space;G)&space;=&space;||a^{[l](C)]}&space;-&space;a^{[l](G)]}||^2" title="\large J_{content}(C, G) = ||a^{[l](C)]} - a^{[l](G)]}||^2" /></a>
 </p>
 
+#### Style Cost Function
 
+* Is based on a hidden layer L
+* Measures how correlated are the filters of a given layer for two different images.
+
+
+<p align="center">
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{120}&space;\large&space;J_{stlye}^{(l)}(S,&space;G)&space;=&space;||G^{[l](S)}-G^{[l](G)}||^2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;J_{stlye}^{(l)}(S,&space;G)&space;=&space;||G^{[l](S)}-G^{[l](G)}||^2" title="\large J_{stlye}^{(l)}(S, G) = ||G^{[l](S)}-G^{[l](G)}||^2" /></a>
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{120}&space;\large&space;G^{[l](S)}_{kk'}=\sum_{i=1}^{n_h^{[l]}}\sum_{j=1}^{n_w^{[l]}}&space;a^{[l](S)}_{ijk}a^{[l](S)}_{ijk'}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;G^{[l](S)}_{kk'}=\sum_{i=1}^{n_h^{[l]}}\sum_{j=1}^{n_w^{[l]}}&space;a^{[l](S)}_{ijk}a^{[l](S)}_{ijk'}" title="\large G^{[l](S)}_{kk'}=\sum_{i=1}^{n_h^{[l]}}\sum_{j=1}^{n_w^{[l]}} a^{[l](S)}_{ijk}a^{[l](S)}_{ijk'}" /></a>
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{120}&space;\large&space;G^{[l](G)}_{kk'}=\sum_{i=1}^{n_h^{[l]}}\sum_{j=1}^{n_w^{[l]}}&space;a^{[l](G)}_{ijk}a^{[l](G)}_{ijk'}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;G^{[l](G)}_{kk'}=\sum_{i=1}^{n_h^{[l]}}\sum_{j=1}^{n_w^{[l]}}&space;a^{[l](G)}_{ijk}a^{[l](G)}_{ijk'}" title="\large G^{[l](G)}_{kk'}=\sum_{i=1}^{n_h^{[l]}}\sum_{j=1}^{n_w^{[l]}} a^{[l](G)}_{ijk}a^{[l](G)}_{ijk'}" /></a>
+
+</p>
