@@ -1,274 +1,188 @@
+### Part of this code is due to the MatConvNet team and is used to load the parameters of the pretrained VGG19 model in the notebook ###
 
-<!DOCTYPE HTML>
-<html>
+import os
+import sys
+import scipy.io
+import scipy.misc
+import matplotlib.pyplot as plt
+from matplotlib.pyplot import imshow
+from PIL import Image
+from nst_utils import *
 
-<head>
-    <meta charset="utf-8">
+import numpy as np
+import tensorflow as tf
 
-    <title>nst_utils.py (editing)</title>
-    <link rel="shortcut icon" type="image/x-icon" href="/user/bcpklbthrhwhsdhygrgzcs/static/base/images/favicon.ico?v=97c6417ed01bdc0ae3ef32ae4894fd03">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="stylesheet" href="/user/bcpklbthrhwhsdhygrgzcs/static/components/jquery-ui/themes/smoothness/jquery-ui.min.css?v=9b2c8d3489227115310662a343fce11c" type="text/css" />
-    <link rel="stylesheet" href="/user/bcpklbthrhwhsdhygrgzcs/static/components/jquery-typeahead/dist/jquery.typeahead.min.css?v=7afb461de36accb1aa133a1710f5bc56" type="text/css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+class CONFIG:
+    IMAGE_WIDTH = 400
+    IMAGE_HEIGHT = 300
+    COLOR_CHANNELS = 3
+    NOISE_RATIO = 0.6
+    MEANS = np.array([123.68, 116.779, 103.939]).reshape((1,1,1,3)) 
+    VGG_MODEL = 'pretrained-model/imagenet-vgg-verydeep-19.mat' # Pick the VGG 19-layer model by from the paper "Very Deep Convolutional Networks for Large-Scale Image Recognition".
+    STYLE_IMAGE = 'images/stone_style.jpg' # Style image to use.
+    CONTENT_IMAGE = 'images/content300.jpg' # Content image to use.
+    OUTPUT_DIR = 'output/'
     
+def load_vgg_model(path):
+    """
+    Returns a model for the purpose of 'painting' the picture.
+    Takes only the convolution layer weights and wrap using the TensorFlow
+    Conv2d, Relu and AveragePooling layer. VGG actually uses maxpool but
+    the paper indicates that using AveragePooling yields better results.
+    The last few fully connected layers are not used.
+    Here is the detailed configuration of the VGG model:
+        0 is conv1_1 (3, 3, 3, 64)
+        1 is relu
+        2 is conv1_2 (3, 3, 64, 64)
+        3 is relu    
+        4 is maxpool
+        5 is conv2_1 (3, 3, 64, 128)
+        6 is relu
+        7 is conv2_2 (3, 3, 128, 128)
+        8 is relu
+        9 is maxpool
+        10 is conv3_1 (3, 3, 128, 256)
+        11 is relu
+        12 is conv3_2 (3, 3, 256, 256)
+        13 is relu
+        14 is conv3_3 (3, 3, 256, 256)
+        15 is relu
+        16 is conv3_4 (3, 3, 256, 256)
+        17 is relu
+        18 is maxpool
+        19 is conv4_1 (3, 3, 256, 512)
+        20 is relu
+        21 is conv4_2 (3, 3, 512, 512)
+        22 is relu
+        23 is conv4_3 (3, 3, 512, 512)
+        24 is relu
+        25 is conv4_4 (3, 3, 512, 512)
+        26 is relu
+        27 is maxpool
+        28 is conv5_1 (3, 3, 512, 512)
+        29 is relu
+        30 is conv5_2 (3, 3, 512, 512)
+        31 is relu
+        32 is conv5_3 (3, 3, 512, 512)
+        33 is relu
+        34 is conv5_4 (3, 3, 512, 512)
+        35 is relu
+        36 is maxpool
+        37 is fullyconnected (7, 7, 512, 4096)
+        38 is relu
+        39 is fullyconnected (1, 1, 4096, 4096)
+        40 is relu
+        41 is fullyconnected (1, 1, 4096, 1000)
+        42 is softmax
+    """
     
-<link rel="stylesheet" href="/user/bcpklbthrhwhsdhygrgzcs/static/components/codemirror/lib/codemirror.css?v=f25e9a9159e54b423b5a8dc4b1ab5c6e">
-<link rel="stylesheet" href="/user/bcpklbthrhwhsdhygrgzcs/static/components/codemirror/addon/dialog/dialog.css?v=c89dce10b44d2882a024e7befc2b63f5">
+    vgg = scipy.io.loadmat(path)
 
-    <link rel="stylesheet" href="/user/bcpklbthrhwhsdhygrgzcs/static/style/style.min.css?v=29c09309dd70e7fe93378815e5f022ae" type="text/css"/>
+    vgg_layers = vgg['layers']
     
+    def _weights(layer, expected_layer_name):
+        """
+        Return the weights and bias from the VGG model for a given layer.
+        """
+        wb = vgg_layers[0][layer][0][0][2]
+        W = wb[0][0]
+        b = wb[0][1]
+        layer_name = vgg_layers[0][layer][0][0][0][0]
+        assert layer_name == expected_layer_name
+        return W, b
 
-    <link rel="stylesheet" href="/user/bcpklbthrhwhsdhygrgzcs/custom/custom.css" type="text/css" />
-    <script src="/user/bcpklbthrhwhsdhygrgzcs/static/components/es6-promise/promise.min.js?v=f004a16cb856e0ff11781d01ec5ca8fe" type="text/javascript" charset="utf-8"></script>
-    <script src="/user/bcpklbthrhwhsdhygrgzcs/static/components/preact/index.js?v=5b98fce8b86ce059de89f9e728e16957" type="text/javascript"></script>
-    <script src="/user/bcpklbthrhwhsdhygrgzcs/static/components/proptypes/index.js?v=c40890eb04df9811fcc4d47e53a29604" type="text/javascript"></script>
-    <script src="/user/bcpklbthrhwhsdhygrgzcs/static/components/preact-compat/index.js?v=d376eb109a00b9b2e8c0d30782eb6df7" type="text/javascript"></script>
-    <script src="/user/bcpklbthrhwhsdhygrgzcs/static/components/requirejs/require.js?v=6da8be361b9ee26c5e721e76c6d4afce" type="text/javascript" charset="utf-8"></script>
-    <script>
-      require.config({
-          
-          urlArgs: "v=20171119140045",
-          
-          baseUrl: '/user/bcpklbthrhwhsdhygrgzcs/static/',
-          paths: {
-            'auth/js/main': 'auth/js/main.min',
-            custom : '/user/bcpklbthrhwhsdhygrgzcs/custom',
-            nbextensions : '/user/bcpklbthrhwhsdhygrgzcs/nbextensions',
-            kernelspecs : '/user/bcpklbthrhwhsdhygrgzcs/kernelspecs',
-            underscore : 'components/underscore/underscore-min',
-            backbone : 'components/backbone/backbone-min',
-            jquery: 'components/jquery/jquery.min',
-            bootstrap: 'components/bootstrap/js/bootstrap.min',
-            bootstraptour: 'components/bootstrap-tour/build/js/bootstrap-tour.min',
-            'jquery-ui': 'components/jquery-ui/ui/minified/jquery-ui.min',
-            moment: 'components/moment/moment',
-            codemirror: 'components/codemirror',
-            termjs: 'components/xterm.js/dist/xterm',
-            typeahead: 'components/jquery-typeahead/dist/jquery.typeahead.min',
-          },
-          map: { // for backward compatibility
-              "*": {
-                  "jqueryui": "jquery-ui",
-              }
-          },
-          shim: {
-            typeahead: {
-              deps: ["jquery"],
-              exports: "typeahead"
-            },
-            underscore: {
-              exports: '_'
-            },
-            backbone: {
-              deps: ["underscore", "jquery"],
-              exports: "Backbone"
-            },
-            bootstrap: {
-              deps: ["jquery"],
-              exports: "bootstrap"
-            },
-            bootstraptour: {
-              deps: ["bootstrap"],
-              exports: "Tour"
-            },
-            "jquery-ui": {
-              deps: ["jquery"],
-              exports: "$"
-            }
-          },
-          waitSeconds: 30,
-      });
+        return W, b
 
-      require.config({
-          map: {
-              '*':{
-                'contents': 'services/contents',
-              }
-          }
-      });
+    def _relu(conv2d_layer):
+        """
+        Return the RELU function wrapped over a TensorFlow layer. Expects a
+        Conv2d layer input.
+        """
+        return tf.nn.relu(conv2d_layer)
 
-      // error-catching custom.js shim.
-      define("custom", function (require, exports, module) {
-          try {
-              var custom = require('custom/custom');
-              console.debug('loaded custom.js');
-              return custom;
-          } catch (e) {
-              console.error("error loading custom.js", e);
-              return {};
-          }
-      })
-    </script>
+    def _conv2d(prev_layer, layer, layer_name):
+        """
+        Return the Conv2D layer using the weights, biases from the VGG
+        model at 'layer'.
+        """
+        W, b = _weights(layer, layer_name)
+        W = tf.constant(W)
+        b = tf.constant(np.reshape(b, (b.size)))
+        return tf.nn.conv2d(prev_layer, filter=W, strides=[1, 1, 1, 1], padding='SAME') + b
 
+    def _conv2d_relu(prev_layer, layer, layer_name):
+        """
+        Return the Conv2D + RELU layer using the weights, biases from the VGG
+        model at 'layer'.
+        """
+        return _relu(_conv2d(prev_layer, layer, layer_name))
+
+    def _avgpool(prev_layer):
+        """
+        Return the AveragePooling layer.
+        """
+        return tf.nn.avg_pool(prev_layer, ksize=[1, 2, 2, 1], strides=[1, 2, 2, 1], padding='SAME')
+
+    # Constructs the graph model.
+    graph = {}
+    graph['input']   = tf.Variable(np.zeros((1, CONFIG.IMAGE_HEIGHT, CONFIG.IMAGE_WIDTH, CONFIG.COLOR_CHANNELS)), dtype = 'float32')
+    graph['conv1_1']  = _conv2d_relu(graph['input'], 0, 'conv1_1')
+    graph['conv1_2']  = _conv2d_relu(graph['conv1_1'], 2, 'conv1_2')
+    graph['avgpool1'] = _avgpool(graph['conv1_2'])
+    graph['conv2_1']  = _conv2d_relu(graph['avgpool1'], 5, 'conv2_1')
+    graph['conv2_2']  = _conv2d_relu(graph['conv2_1'], 7, 'conv2_2')
+    graph['avgpool2'] = _avgpool(graph['conv2_2'])
+    graph['conv3_1']  = _conv2d_relu(graph['avgpool2'], 10, 'conv3_1')
+    graph['conv3_2']  = _conv2d_relu(graph['conv3_1'], 12, 'conv3_2')
+    graph['conv3_3']  = _conv2d_relu(graph['conv3_2'], 14, 'conv3_3')
+    graph['conv3_4']  = _conv2d_relu(graph['conv3_3'], 16, 'conv3_4')
+    graph['avgpool3'] = _avgpool(graph['conv3_4'])
+    graph['conv4_1']  = _conv2d_relu(graph['avgpool3'], 19, 'conv4_1')
+    graph['conv4_2']  = _conv2d_relu(graph['conv4_1'], 21, 'conv4_2')
+    graph['conv4_3']  = _conv2d_relu(graph['conv4_2'], 23, 'conv4_3')
+    graph['conv4_4']  = _conv2d_relu(graph['conv4_3'], 25, 'conv4_4')
+    graph['avgpool4'] = _avgpool(graph['conv4_4'])
+    graph['conv5_1']  = _conv2d_relu(graph['avgpool4'], 28, 'conv5_1')
+    graph['conv5_2']  = _conv2d_relu(graph['conv5_1'], 30, 'conv5_2')
+    graph['conv5_3']  = _conv2d_relu(graph['conv5_2'], 32, 'conv5_3')
+    graph['conv5_4']  = _conv2d_relu(graph['conv5_3'], 34, 'conv5_4')
+    graph['avgpool5'] = _avgpool(graph['conv5_4'])
     
+    return graph
+
+def generate_noise_image(content_image, noise_ratio = CONFIG.NOISE_RATIO):
+    """
+    Generates a noisy image by adding random noise to the content_image
+    """
     
-
-</head>
-
-<body class="edit_app "
- 
-data-base-url="/user/bcpklbthrhwhsdhygrgzcs/"
-data-file-path="week4/Neural%20Style%20Transfer/nst_utils.py"
-
-  
- 
-
-dir="ltr">
-
-<noscript>
-    <div id='noscript'>
-      Jupyter Notebook requires JavaScript.<br>
-      Please enable it to proceed.
-  </div>
-</noscript>
-
-<div id="header">
-  <div id="header-container" class="container">
-  <div id="ipython_notebook" class="nav navbar-brand pull-left"><a href="/user/bcpklbthrhwhsdhygrgzcs/tree" title='dashboard'>
-<img src='/hub/logo' alt='Jupyter Notebook'/>
-</a></div>
-
-  
-
-  
-  
-
-    <span id="login_widget">
-      
-        <button id="logout" class="btn btn-sm navbar-btn">Logout</button>
-      
-    </span>
-
-  
-
-  
-
-<a href='/hub/home'
- class='btn btn-default btn-sm navbar-btn pull-right'
- style='margin-right: 4px; margin-left: 2px;'
->
-Control Panel</a>
-
-
-  
-
-<span id="save_widget" class="pull-left save_widget">
-    <span class="filename"></span>
-    <span class="last_modified"></span>
-</span>
-
-
-  </div>
-  <div class="header-bar"></div>
-
-  
-
-<div id="menubar-container" class="container">
-  <div id="menubar">
-    <div id="menus" class="navbar navbar-default" role="navigation">
-      <div class="container-fluid">
-          <p  class="navbar-text indicator_area">
-          <span id="current-mode" >current mode</span>
-          </p>
-        <button type="button" class="btn btn-default navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <i class="fa fa-bars"></i>
-          <span class="navbar-text">Menu</span>
-        </button>
-        <ul class="nav navbar-nav navbar-right">
-          <li id="notification_area"></li>
-        </ul>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">File</a>
-              <ul id="file-menu" class="dropdown-menu">
-                <li id="new-file"><a href="#">New</a></li>
-                <li id="save-file"><a href="#">Save</a></li>
-                <li id="rename-file"><a href="#">Rename</a></li>
-                <li id="download-file"><a href="#">Download</a></li>
-              </ul>
-            </li>
-            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Edit</a>
-              <ul id="edit-menu" class="dropdown-menu">
-                <li id="menu-find"><a href="#">Find</a></li>
-                <li id="menu-replace"><a href="#">Find &amp; Replace</a></li>
-                <li class="divider"></li>
-                <li class="dropdown-header">Key Map</li>
-                <li id="menu-keymap-default"><a href="#">Default<i class="fa"></i></a></li>
-                <li id="menu-keymap-sublime"><a href="#">Sublime Text<i class="fa"></i></a></li>
-                <li id="menu-keymap-vim"><a href="#">Vim<i class="fa"></i></a></li>
-                <li id="menu-keymap-emacs"><a href="#">emacs<i class="fa"></i></a></li>
-              </ul>
-            </li>
-            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">View</a>
-              <ul id="view-menu" class="dropdown-menu">
-              <li id="toggle_header" title="Show/Hide the logo and notebook title (above menu bar)">
-              <a href="#">Toggle Header</a></li>
-              <li id="menu-line-numbers"><a href="#">Toggle Line Numbers</a></li>
-              </ul>
-            </li>
-            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Language</a>
-              <ul id="mode-menu" class="dropdown-menu">
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="lower-header-bar"></div>
-
-
-</div>
-
-<div id="site">
-
-
-<div id="texteditor-backdrop">
-<div id="texteditor-container" class="container"></div>
-</div>
-
-
-</div>
-
-
-
-
-
-
+    # Generate a random noise_image
+    noise_image = np.random.uniform(-20, 20, (1, CONFIG.IMAGE_HEIGHT, CONFIG.IMAGE_WIDTH, CONFIG.COLOR_CHANNELS)).astype('float32')
     
+    # Set the input_image to be a weighted average of the content_image and a noise_image
+    input_image = noise_image * noise_ratio + content_image * (1 - noise_ratio)
+    
+    return input_image
 
 
-<script src="/user/bcpklbthrhwhsdhygrgzcs/static/edit/js/main.min.js?v=7eb6af843396244a81afb577aedbaf89" type="text/javascript" charset="utf-8"></script>
+def reshape_and_normalize_image(image):
+    """
+    Reshape and normalize the input image (content or style)
+    """
+    
+    # Reshape image to mach expected input of VGG16
+    image = np.reshape(image, ((1,) + image.shape))
+    
+    # Substract the mean to match the expected input of VGG16
+    image = image - CONFIG.MEANS
+    
+    return image
 
 
-<script type='text/javascript'>
-  function _remove_token_from_url() {
-    if (window.location.search.length <= 1) {
-      return;
-    }
-    var search_parameters = window.location.search.slice(1).split('&');
-    for (var i = 0; i < search_parameters.length; i++) {
-      if (search_parameters[i].split('=')[0] === 'token') {
-        // remote token from search parameters
-        search_parameters.splice(i, 1);
-        var new_search = '';
-        if (search_parameters.length) {
-          new_search = '?' + search_parameters.join('&');
-        }
-        var new_url = window.location.origin + 
-                      window.location.pathname + 
-                      new_search + 
-                      window.location.hash;
-        window.history.replaceState({}, "", new_url);
-        return;
-      }
-    }
-  }
-  _remove_token_from_url();
-</script>
-</body>
-
-</html>
+def save_image(path, image):
+    
+    # Un-normalize the image so that it looks good
+    image = image + CONFIG.MEANS
+    
+    # Clip and Save the image
+    image = np.clip(image[0], 0, 255).astype('uint8')
+    scipy.misc.imsave(path, image)
