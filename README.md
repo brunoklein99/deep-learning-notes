@@ -817,3 +817,10 @@ The first 8 are associated with the Anchor box 1 and the later 8 with Anchor box
 <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{120}&space;\large&space;G^{[l](G)}_{kk'}=\sum_{i=1}^{n_h^{[l]}}\sum_{j=1}^{n_w^{[l]}}&space;a^{[l](G)}_{ijk}a^{[l](G)}_{ijk'}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;G^{[l](G)}_{kk'}=\sum_{i=1}^{n_h^{[l]}}\sum_{j=1}^{n_w^{[l]}}&space;a^{[l](G)}_{ijk}a^{[l](G)}_{ijk'}" title="\large G^{[l](G)}_{kk'}=\sum_{i=1}^{n_h^{[l]}}\sum_{j=1}^{n_w^{[l]}} a^{[l](G)}_{ijk}a^{[l](G)}_{ijk'}" /></a>
 
 </p>
+
+### 4.14.2 1D and 3D Generalizations
+
+
+<p align="center">
+  <img src="https://i.imgur.com/e3FQa5z.png" />
+</p>
