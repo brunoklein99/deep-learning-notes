@@ -824,3 +824,14 @@ The first 8 are associated with the Anchor box 1 and the later 8 with Anchor box
 <p align="center">
   <img src="https://i.imgur.com/e3FQa5z.png" />
 </p>
+
+# 5 Sequence Models
+
+## 5.1 
+
+<p align="center">
+  <img src="https://i.imgur.com/s0ixqqp.png" />
+</p>
+
+* a<0> is usually initialized with a zero vector.
+
