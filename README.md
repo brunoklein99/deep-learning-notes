@@ -827,7 +827,7 @@ The first 8 are associated with the Anchor box 1 and the later 8 with Anchor box
 
 # 5 Sequence Models
 
-## 5.1 
+## 5.1 Recurrent Neural Networks
 
 <p align="center">
   <img src="https://i.imgur.com/s0ixqqp.png" />
