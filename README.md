@@ -847,3 +847,9 @@ Simplifying the computations
 <p align="center">
   <img src="https://i.imgur.com/SG23dhW.png" />
 </p>
+
+For One2Seq type architectures, the output of the last time step is given as input for the next time step.
+
+<p align="center">
+  <img src="https://i.imgur.com/sDsIh6I.png" />
+</p>
