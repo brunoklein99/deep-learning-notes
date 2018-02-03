@@ -853,3 +853,9 @@ For One2Seq type architectures, the output of the last time step is given as inp
 <p align="center">
   <img src="https://i.imgur.com/sDsIh6I.png" />
 </p>
+
+Seq2Seq with different input/output lenghts
+
+<p align="center">
+  <img src="https://i.imgur.com/uyixqp6.png" />
+</p>
