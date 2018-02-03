@@ -841,3 +841,9 @@ The first 8 are associated with the Anchor box 1 and the later 8 with Anchor box
 
 * To compute the hidden state we usually use tanh
 * To compute y_hat we use sigmoid for binary classifcation or softmax for multi class classification. Or any other activation that makes sense with the kind of output we are working with.
+
+Simplifying the computations
+
+<p align="center">
+  <img src="https://i.imgur.com/SG23dhW.png" />
+</p>
