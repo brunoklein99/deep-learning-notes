@@ -835,3 +835,9 @@ The first 8 are associated with the Anchor box 1 and the later 8 with Anchor box
 
 * a<0> is usually initialized with a zero vector.
 
+<p align="center">
+  <img src="https://i.imgur.com/KcDLC6n.png" />
+</p>
+
+* To compute the hidden state we usually use tanh
+* To compute y_hat we use sigmoid for binary classifcation or softmax for multi class classification. Or any other activation that makes sense with the kind of output we are working with.
