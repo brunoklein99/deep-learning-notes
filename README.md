@@ -879,3 +879,16 @@ Seq2Seq with different input/output lenghts
 <p align="center">
   <img src="https://i.imgur.com/VCDAFJn.png" />
 </p>
+
+## 5.2 Language Model
+
+## 5.3 Neural Machine Translation and Sequence Encoding
+
+<p align="center">
+  <img src="https://i.imgur.com/oeiNypx.png" />
+</p>
+
+* There is 2 parts, encoder and decoder.
+* The final hidden state of the encoder is able to make a vector representation of the input sequence
+* Which is then decoded by the decoder.
+* This is useful to generate embeddings for sequences.
